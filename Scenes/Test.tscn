@@ -1,0 +1,167 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Scripts/World.gd" type="Script" id=1]
+[ext_resource path="res://Template/TemplateStatic.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Template/TemplateObject.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/DebugMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/newPlayer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Models/Ball_low.png" type="Texture" id=6]
+[ext_resource path="res://Models/Ball.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://Models/FlowerOutline.png" type="Texture" id=8]
+[ext_resource path="res://Models/Tisch.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://Models/Gras/Gras_sl.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://Models/Stuhl.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://Models/truetree.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://Models/Tree.png" type="Texture" id=13]
+[ext_resource path="res://Models/Wall.obj" type="ArrayMesh" id=14]
+[ext_resource path="res://Models/Brick.png" type="Texture" id=15]
+[ext_resource path="res://Models/CurvedGround.obj" type="ArrayMesh" id=16]
+[ext_resource path="res://Models/Beton.png" type="Texture" id=17]
+[ext_resource path="res://Models/Ground.png" type="Texture" id=18]
+[ext_resource path="res://Models/Gras/Gras_mr.obj" type="ArrayMesh" id=19]
+[ext_resource path="res://Models/Gras/Gras_tl.obj" type="ArrayMesh" id=20]
+[ext_resource path="res://Models/Flower.obj" type="ArrayMesh" id=21]
+[ext_resource path="res://Scripts/Help.gd" type="Script" id=22]
+[ext_resource path="res://Scenes/zBoundry.gd" type="Script" id=23]
+
+[sub_resource type="PhysicsMaterial" id=5]
+bounce = 0.5
+
+[sub_resource type="Environment" id=6]
+background_energy = 0.5
+ambient_light_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 150, 100, 1 )
+
+[node name="World" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+
+[node name="interactable_Ball" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+meshShape = ExtResource( 7 )
+texture = ExtResource( 6 )
+PM = SubResource( 5 )
+
+[node name="Tree" parent="." instance=ExtResource( 2 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 1, 25.233, 12.133, 0 )
+meshShape = ExtResource( 12 )
+texture = ExtResource( 13 )
+
+[node name="Wall" parent="." instance=ExtResource( 2 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 1, -112.108, -17.489, 0 )
+meshShape = ExtResource( 14 )
+texture = ExtResource( 15 )
+
+[node name="Ground" parent="." instance=ExtResource( 2 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 1, -31.143, -23.696, -0.005 )
+meshShape = ExtResource( 16 )
+texture = ExtResource( 18 )
+extraZ = 0.01
+
+[node name="Chair1" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -80.323, -17.973, 0 )
+meshShape = ExtResource( 11 )
+texture = ExtResource( 17 )
+
+[node name="Chair2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -66.168, -18.095, 0 )
+meshShape = ExtResource( 11 )
+texture = ExtResource( 17 )
+
+[node name="Table" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -81.778, -18.162, 0 )
+meshShape = ExtResource( 9 )
+texture = ExtResource( 17 )
+
+[node name="Flower" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -118.112, -17.684, 0 )
+meshShape = ExtResource( 21 )
+texture = ExtResource( 8 )
+
+[node name="Gras1-1" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0998964, -0.00455025, 0, 0.00455025, 0.0998964, 0, 0, 0, 1, -113.076, -19.637, 0 )
+meshShape = ExtResource( 20 )
+texture = ExtResource( 8 )
+
+[node name="Gras1-2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0998964, -0.00455025, 0, 0.00455025, 0.0998964, 0, 0, 0, 1, -115.388, -19.453, 0 )
+meshShape = ExtResource( 10 )
+texture = ExtResource( 8 )
+
+[node name="Gras2-1" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0998964, -0.00455025, 0, 0.00455025, 0.0998964, 0, 0, 0, 1, 26.632, -5.214, 0 )
+meshShape = ExtResource( 20 )
+texture = ExtResource( 8 )
+
+[node name="Gras2-2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0998964, -0.00455025, 0, 0.00455025, 0.0998964, 0, 0, 0, 1, 30.958, -4.838, 0 )
+meshShape = ExtResource( 19 )
+texture = ExtResource( 8 )
+
+[node name="Gras2-3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0998964, -0.00455025, 0, 0.00455025, 0.0998964, 0, 0, 0, 1, 24.32, -5.03, 0 )
+meshShape = ExtResource( 10 )
+texture = ExtResource( 8 )
+
+[node name="DirectionalLight (read description)" type="DirectionalLight" parent="."]
+transform = Transform( 0.707106, 1.28028e-08, -0.707107, 0.707106, -3.09086e-08, 0.707107, -1.28028e-08, -1, -3.09086e-08, 0, 0, 0 )
+light_energy = 6.533
+light_bake_mode = 2
+shadow_enabled = true
+shadow_reverse_cull_face = true
+directional_shadow_max_distance = 8192.0
+__meta__ = {
+"_editor_description_": "I think the model normals are screwed up and that is why no light is shining"
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
+[node name="DebugMenu" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="Help" type="Panel" parent="."]
+margin_right = 395.0
+margin_bottom = 198.0
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Help"]
+margin_right = 362.0
+margin_bottom = 236.0
+text = "Controls:
+[w,a,s,d] 	= move forward, backword, left, right
+[Space] 	= Jump (Kinda useless)
+[Right mouse button] + Drag = Move camera
+[Left mouse button] = Select object to interact
+[Scroll] = Camera zoom
+[Left mouse button] if object selected = Move object
+[Esc] = Deselect object
+[h] = Hide/Show infobox
+
+Note: In this version only the ball (orange thing) is selecable"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="z axis boundry" type="Spatial" parent="."]
+script = ExtResource( 23 )
+
+[node name="StaticBody" type="StaticBody" parent="z axis boundry"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape" type="CollisionShape" parent="z axis boundry/StaticBody"]
+shape = SubResource( 7 )
+
+[node name="StaticBody2" type="StaticBody" parent="z axis boundry"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape" type="CollisionShape" parent="z axis boundry/StaticBody2"]
+shape = SubResource( 7 )

@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/PhysicsSimulation.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/TemplateObject.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/ObjectMesh.gd" type="Script" id=4]
+[ext_resource path="res://Models/Ball.obj" type="ArrayMesh" id=5]
+
+[sub_resource type="ArrayMesh" id=4]
+
+[sub_resource type="PhysicsMaterial" id=7]
+
+[node name="TemplateObject" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="ObjectMesh" type="MeshInstance" parent="."]
+mesh = SubResource( 4 )
+script = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="ObjectMesh" groups=["interactable"]]
+
+[node name="CollisionShape" type="CollisionShape" parent="ObjectMesh/StaticBody"]
+
+[node name="PhysicsSim" type="RigidBody" parent="."]
+physics_material_override = SubResource( 7 )
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PhysicsSim"]
+
+[node name="MeshInstance" type="MeshInstance" parent="PhysicsSim"]
+visible = false
+mesh = ExtResource( 5 )
+material/0 = null

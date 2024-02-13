@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/DebugMenu.gd" type="Script" id=1]
+
+[node name="DebugMenu" type="Panel"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 212.0
+margin_bottom = 115.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 3.0
+margin_top = 4.0
+margin_right = 62.0
+margin_bottom = 18.0
+rect_pivot_offset = Vector2( 42, 7 )
+text = "Direction"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 71.0
+margin_top = 18.0
+margin_right = 130.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 42, 7 )
+text = "Höhe"
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 3.0
+margin_top = 18.0
+margin_right = 62.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 42, 7 )
+text = "Breite"
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 137.0
+margin_top = 17.0
+margin_right = 196.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 42, 7 )
+text = "Zeit"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = 4.0
+margin_top = 32.0
+margin_right = 62.0
+margin_bottom = 56.0
+align = 1
+
+[node name="LineEdit2" type="LineEdit" parent="."]
+margin_left = 71.0
+margin_top = 32.0
+margin_right = 129.0
+margin_bottom = 56.0
+rect_pivot_offset = Vector2( 38, 5 )
+align = 1
+
+[node name="LineEdit3" type="LineEdit" parent="."]
+margin_left = 139.0
+margin_top = 32.0
+margin_right = 197.0
+margin_bottom = 56.0
+rect_pivot_offset = Vector2( 38, 5 )
+align = 1
+
+[node name="Button" type="Button" parent="."]
+margin_left = 3.0
+margin_top = 60.0
+margin_right = 203.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 108, 28 )
+text = "Generate Mesh"
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 4.0
+margin_top = 85.0
+margin_right = 202.0
+margin_bottom = 105.0
+text = "Save Mesh"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
